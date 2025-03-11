@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+    <div class="hero">
+        <div class="spline-container">
+            <spline-viewer url="https://prod.spline.design/BgMFvFEuVSABcqos/scene.splinecode"></spline-viewer>
+        </div>
+        <div class="hero-content">
+            <h1>Airport Rides with Fellow Students</h1>
+            <p>Safe, affordable rides to and from the airport with students from your college</p>
+            <a href="{{ url_for('add_traveler') }}" class="cta-button">Find a Ride</a>
+        </div>
+    </div>
+
+    <section class="how-it-works overlay-section" id="how-it-works">
+        <h2>How Wing It Works</h2>
+        <div class="steps-container">
+            <div class="step-card">
+                <div class="step-number">1</div>
+                <h3>Sign Up</h3>
+                <p>Create an account with your college email to join our verified student community. We ensure all users are current students for added safety and trust.</p>
+                <ul>
+                    <li>Verify your student status</li>
+                    <li>Create your profile</li>
+                    <li>Add your travel preferences</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">2</div>
+                <h3>Book a Ride</h3>
+                <p>Enter your travel details and find matches with students heading to the same airport. Choose based on schedule, price, and user ratings.</p>
+                <ul>
+                    <li>Find rides that match your schedule</li>
+                    <li>View driver profiles and ratings</li>
+                    <li>Instant messaging with potential matches</li>
+                </ul>
+            </div>
+
+            <div class="step-card">
+                <div class="step-number">3</div>
+                <h3>Meet & Travel</h3>
+                <p>Connect with your travel buddy, split the cost, and enjoy a safe ride to the airport. Build connections within your college community.</p>
+                <ul>
+                    <li>In-app payment splitting</li>
+                    <li>Real-time ride tracking</li>
+                    <li>24/7 customer support</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="current-matches">
+        <h2>Current Matches</h2>
+        {% if matches %}
+            <div class="matches-grid">
+                {% for person1, person2 in matches %}
+                    <div class="match-card">
+                        <h3>Match Found!</h3>
+                        <div class="match-details">
+                            <div class="traveler">
+                                <h4>{{ person1.name }}</h4>
+                                <p>Time: {{ person1.time }}</p>
+                            </div>
+                            <div class="traveler">
+                                <h4>{{ person2.name }}</h4>
+                                <p>Time: {{ person2.time }}</p>
+                            </div>
+                        </div>
+                        <p class="match-date">Date: {{ person1.date }}</p>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-matches">No current matches. <a href="{{ url_for('add_traveler') }}">Add your trip</a> to find travel buddies!</p>
+        {% endif %}
+    </section>
+{% endblock %} 

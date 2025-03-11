@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Matches{% endblock %}
+
+{% block content %}
+    <h2>Found Matches</h2>
+    {% if matches %}
+        <div class="matches-grid">
+            {% for person1, person2 in matches %}
+                <div class="match-card">
+                    <h3>Match Found!</h3>
+                    <div class="match-details">
+                        <div class="traveler">
+                            <h4>{{ person1.name }}</h4>
+                            <p>Email: {{ person1.email }}</p>
+                            <p>Time: {{ person1.time }}</p>
+                        </div>
+                        <div class="traveler">
+                            <h4>{{ person2.name }}</h4>
+                            <p>Email: {{ person2.email }}</p>
+                            <p>Time: {{ person2.time }}</p>
+                        </div>
+                    </div>
+                    <p class="match-date">Date: {{ person1.date }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+{% endblock %} 
