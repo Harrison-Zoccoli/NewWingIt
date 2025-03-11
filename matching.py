@@ -66,14 +66,6 @@ def send_match_email(user1, user2):
 
 
 
-##functions for getting date and time
-def get_date(prompt):
-    return datetime.strptime(input(prompt), "%Y-%m-%d").date()  # Converts to date object
-
-def get_time(prompt):
-    return datetime.strptime(input(prompt), "%H:%M").time()  # Converts to time object
-
-
 ##functions for checking if dates and times match and diff in time
 def calculate_time_difference_minutes(time1, time2):
     """Calculate the difference between two times in minutes"""
@@ -104,51 +96,4 @@ def find_matches(current_user, all_users):
             send_match_email(current_user, potential_match)
     
     return compatible_matches
-
-# Create a list to store all travelers
-travelers = []
-
-# Add first traveler (interactive input)
-travelers.append(UserData(
-    email=input("Enter your email: "),
-    name=input("Enter your name: "),
-    date_value=get_date("Enter the date of your flight (YYYY-MM-DD): "),
-    time_value=get_time("Enter the time of your desired uber (HH:MM): ")
-))
-
-# Add second traveler (Ben)
-travelers.append(UserData(
-    email="BenDover@gmail.com",
-    name="Ben Dover",
-    date_value=get_date("Enter the date of Ben's flight (YYYY-MM-DD): "),
-    time_value=get_time("Enter the time of Ben's desired uber (HH:MM): ")
-))
-
-# Add third traveler (Andrew)
-travelers.append(UserData(
-    email="Andrew@gmail.com",
-    name="Andrew",
-    date_value=get_date("Enter the date of Andrew's flight (YYYY-MM-DD): "),
-    time_value=get_time("Enter the time of Andrew's desired uber (HH:MM): ")
-))
-
-# Print all travelers
-print("\nAll Travelers:")
-for traveler in travelers:
-    print(traveler)
-
-# Find and print all matches
-print("\nCompatible Travel Matches:")
-for traveler in travelers:
-    matches = find_matches(traveler, travelers)
-    if matches:
-        for person1, person2 in matches:
-            print(f"\nMatch found between:")
-            print(f"  {person1.name} ({person1.email})")
-            print(f"  {person2.name} ({person2.email})")
-            print(f"  Date: {person1.date}")
-            print(f"  {person1.name}'s time: {person1.time}")
-            print(f"  {person2.name}'s time: {person2.time}")
-    else:
-        print(f"\n{traveler.name} has no compatible matches")
 
