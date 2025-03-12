@@ -10,9 +10,11 @@ app.config['STATIC_URL_PATH'] = '/static'
 # Store travelers in memory (replace with database in production)
 travelers = []
 
+SPLINE_URL = "https://prod.spline.design/BgMFvFEuVSABcqos/scene.splinecode"
+
 @app.route('/')
 def index():
-    return render_template('index.html', travelers=travelers)
+    return render_template('index.html')
 
 @app.route('/add_traveler', methods=['GET', 'POST'])
 def add_traveler():
@@ -31,11 +33,11 @@ def add_traveler():
             travelers.append(new_traveler)
             
             flash('Traveler added successfully!', 'success')
-            return redirect(url_for('index'))
+            return redirect(url_for('add_traveler'))
         except Exception as e:
             flash(f'Error adding traveler: {str(e)}', 'error')
     
-    return render_template('add_traveler.html')
+    return render_template('add_traveler.html', travelers=travelers)
 
 @app.route('/find_matches')
 def find_all_matches():

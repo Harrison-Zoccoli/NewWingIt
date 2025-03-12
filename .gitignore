@@ -1,18 +1,4 @@
-# Secrets
-.env
-*.pem
-*.key
-
-# Python
-__pycache__/
-*.py[cod]
-*$py.class
-venv/
-env/
-
-# IDE
-.vscode/
-.idea/
-
-# Azure
-.azure/ 
+.DS_Store
+node_modules/
+package-lock.json
+package.json
