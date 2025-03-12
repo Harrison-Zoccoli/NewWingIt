@@ -9,7 +9,7 @@
         </div>
         <div class="hero-content">
             <h1>CMU Rideshare</h1>
-            <p>Connect with another student to split an Uber!</p>
+            <p>Connect with students to split an Uber to the airport!</p>
             <a href="{{ url_for('add_traveler') }}" class="cta-button">Find a Ride</a>
         </div>
     </div>
@@ -20,7 +20,7 @@
             <div class="step-card">
                 <div class="step-number">1</div>
                 <h3>Sign Up</h3>
-                <p>Create an account with your college email to join our verified student community. We ensure all users are current students for added safety and trust.</p>
+                <p>Create an account with your college email.</p>
                 <ul>
                     <li>Verify your student status</li>
                     <li>Create your profile</li>
@@ -31,7 +31,7 @@
             <div class="step-card">
                 <div class="step-number">2</div>
                 <h3>Book a Ride</h3>
-                <p>Enter your travel details and find matches with students heading to the same airport. Choose based on destination, date, and time.</p>
+                <p>Enter your travel details and find matches with students heading to the same airport.</p>
                 <ul>
                     <li>Find students that match your schedule</li>
                     <li>We'll email you when we find a match</li>
@@ -42,7 +42,7 @@
             <div class="step-card">
                 <div class="step-number">3</div>
                 <h3>Meet & Travel</h3>
-                <p>Connect with your travel buddy, split the cost, and enjoy a safe ride to the airport. Build connections within your college community.</p>
+                <p>Connect with your travel buddy and split the cost, and enjoy a safe ride to the airport.</p>
                 <ul>
                     <li>In-app payment splitting</li>
                     <li>Real-time ride tracking</li>
@@ -52,29 +52,9 @@
         </div>
     </section>
 
-    <section class="current-matches">
-        <h2>Current Matches</h2>
-        {% if matches %}
-            <div class="matches-grid">
-                {% for person1, person2 in matches %}
-                    <div class="match-card">
-                        <h3>Match Found!</h3>
-                        <div class="match-details">
-                            <div class="traveler">
-                                <h4>{{ person1.name }}</h4>
-                                <p>Time: {{ person1.time }}</p>
-                            </div>
-                            <div class="traveler">
-                                <h4>{{ person2.name }}</h4>
-                                <p>Time: {{ person2.time }}</p>
-                            </div>
-                        </div>
-                        <p class="match-date">Date: {{ person1.date }}</p>
-                    </div>
-                {% endfor %}
-            </div>
-        {% else %}
-            <p class="no-matches">No current matches. <a href="{{ url_for('add_traveler') }}">Add your trip</a> to find travel buddies!</p>
-        {% endif %}
+    <section class="find-matches-section overlay-section">
+        <h2>Find Your Travel Buddy</h2>
+        <p>Ready to save money on your next airport ride?</p>
+        <a href="{{ url_for('add_traveler') }}" class="cta-button">Book a Ride Now</a>
     </section>
 {% endblock %} 

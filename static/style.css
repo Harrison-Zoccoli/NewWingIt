@@ -212,45 +212,38 @@ nav a:hover {
     color: #64B5F6;
 }
 
-/* Current Matches Section */
-.current-matches {
+/* Find Matches Section */
+.find-matches-section {
     position: relative;
     z-index: 2;
-    background: white;
+    background: rgba(0, 0, 0, 0.7);
     padding: 5rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    margin-top: -1px;  /* Ensure no gap between sections */
 }
 
-.current-matches h2 {
+.find-matches-section h2 {
     text-align: center;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 1rem;
+    color: white;
 }
 
-.matches-grid {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2rem;
-}
-
-.match-card {
-    background: white;
-    padding: 2rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    border: 1px solid #e0e0e0;
-}
-
-.no-matches {
-    text-align: center;
+.find-matches-section p {
     font-size: 1.2rem;
-    color: #666;
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 2rem;
+    max-width: 600px;
 }
 
-.no-matches a {
-    color: #2196F3;
-    text-decoration: none;
+.find-matches-section .cta-button {
+    margin-top: 2rem;
+    font-size: 1.2rem;
+    padding: 1rem 3rem;
 }
 
 /* Cards */
