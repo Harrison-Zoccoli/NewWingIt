@@ -85,6 +85,8 @@ def are_dates_same(date1, date2):
 def find_matches(current_user, all_users):
     """Find compatible travel matches for the current user"""
     compatible_matches = []
+    users_to_remove = set()  # Use a set to avoid duplicates
+    
     for potential_match in all_users:
         # Don't match users with themselves
         if current_user.email == potential_match.email:
@@ -93,7 +95,14 @@ def find_matches(current_user, all_users):
         if are_dates_same(current_user.date, potential_match.date) and \
            are_times_compatible(current_user.time, potential_match.time):
             compatible_matches.append((current_user, potential_match))
+            users_to_remove.add(current_user)
+            users_to_remove.add(potential_match)
             send_match_email(current_user, potential_match)
+    
+    # Remove matched users from the travelers list
+    for user in users_to_remove:
+        if user in all_users:
+            all_users.remove(user)
     
     return compatible_matches
 
