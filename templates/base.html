@@ -6,13 +6,23 @@
     <title>Wing It - {% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <script type="module" src="https://unpkg.com/@splinetool/viewer@0.9.490/build/spline-viewer.js"></script>
+    <script>
+        // Preload Spline scene
+        window.addEventListener('load', function() {
+            const splineViewer = document.querySelector('spline-viewer');
+            if (splineViewer) {
+                splineViewer.addEventListener('load', function() {
+                    document.querySelector('.loading-overlay').style.display = 'none';
+                });
+            }
+        });
+    </script>
 </head>
 <body>
     <nav>
         <div class="nav-container">
             <div class="logo">
-                <span class="car-icon">🚗</span>
-                <span class="logo-text">Wing It ✈️</span>
+                <span class="logo-text">Wing It</span>
             </div>
             <ul>
                 <li><a href="{{ url_for('index') }}">Home</a></li>

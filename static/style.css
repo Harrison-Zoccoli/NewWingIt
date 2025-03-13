@@ -13,14 +13,14 @@ body {
 
 /* Navigation */
 nav {
-    background-color: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(8px);
     padding: 1rem;
     position: fixed;
     width: 100%;
     top: 0;
     z-index: 1000;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
@@ -36,11 +36,8 @@ nav {
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #2196F3;
-}
-
-.logo-text {
-    margin-left: 8px;
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 nav ul {
@@ -54,18 +51,19 @@ nav ul li {
 }
 
 nav a {
-    color: #333;
+    color: white;
     text-decoration: none;
     font-weight: 500;
     transition: color 0.3s ease;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
 
 nav a:hover {
-    color: #2196F3;
+    color: #64B5F6;
 }
 
 .login {
-    color: #666;
+    color: white;
 }
 
 .sign-up {
@@ -73,6 +71,8 @@ nav a:hover {
     color: white;
     padding: 0.5rem 1rem;
     border-radius: 4px;
+    backdrop-filter: blur(4px);
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
     transition: background-color 0.3s ease;
 }
 
