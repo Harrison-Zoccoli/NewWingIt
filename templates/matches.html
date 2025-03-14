@@ -3,29 +3,33 @@
 {% block title %}Matches{% endblock %}
 
 {% block content %}
-    <h2>Found Matches</h2>
-    {% if matches %}
-        <div class="matches-grid">
-            {% for person1, person2 in matches %}
-                <div class="match-card">
-                    <h3>Match Found!</h3>
-                    <div class="match-details">
-                        <div class="traveler">
-                            <h4>{{ person1.name }}</h4>
-                            <p>Email: {{ person1.email }}</p>
-                            <p>Time: {{ person1.time }}</p>
+    <div class="matches-container">
+        <h1 class="matches-title">Your Matches</h1>
+        {% if matches %}
+            <h2 class="match-status success">{{ matches|length }} Match{% if matches|length > 1 %}es{% endif %} Found!</h2>
+            <p class="match-instructions">Click a match card to select and coordinate with your travel buddy.</p>
+            <div class="matches-grid">
+                {% for person1, person2 in matches %}
+                    <div class="match-card" onclick="selectMatch('{{ person1.email }}', '{{ person2.email }}')">
+                        <div class="match-details">
+                            <div class="traveler">
+                                <h4>{{ person1.name }}</h4>
+                                <p>Time: {{ person1.time }}</p>
+                            </div>
+                            <div class="traveler">
+                                <h4>{{ person2.name }}</h4>
+                                <p>Time: {{ person2.time }}</p>
+                            </div>
                         </div>
-                        <div class="traveler">
-                            <h4>{{ person2.name }}</h4>
-                            <p>Email: {{ person2.email }}</p>
-                            <p>Time: {{ person2.time }}</p>
-                        </div>
+                        <p class="time-difference">Time Difference: {{ ((person1.time.hour * 60 + person1.time.minute) - (person2.time.hour * 60 + person2.time.minute))|abs }} minutes</p>
+                        <p class="match-date">Date: {{ person1.date }}</p>
+                        <button class="select-match-btn">Select Match</button>
                     </div>
-                    <p class="match-date">Date: {{ person1.date }}</p>
-                </div>
-            {% endfor %}
-        </div>
-    {% else %}
-        <p>No matches found.</p>
-    {% endif %}
+                {% endfor %}
+            </div>
+        {% else %}
+            <h2 class="match-status pending">Added to Waitlist</h2>
+            <p class="match-instructions">We'll email you when we find a match in the next few hours!</p>
+        {% endif %}
+    </div>
 {% endblock %} 

@@ -23,6 +23,14 @@ nav {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
+/* Solid Navigation for non-hero pages */
+.nav-solid {
+    background-color: #2196F3;
+    backdrop-filter: none;
+    border-bottom: none;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
 .nav-container {
     max-width: 1200px;
     margin: 0 auto;
@@ -109,17 +117,27 @@ nav a:hover {
     text-align: left;
     color: white;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    animation: flyIn 1s ease-out forwards;
 }
 
 .hero h1 {
     font-size: 4rem;
     margin-bottom: 1rem;
+    opacity: 0;
+    animation: flyIn 1s ease-out 0.2s forwards;
 }
 
 .hero p {
     font-size: 1.5rem;
     margin-bottom: 2rem;
     max-width: 500px;
+    opacity: 0;
+    animation: flyIn 1s ease-out 0.4s forwards;
+}
+
+.hero .cta-button {
+    opacity: 0;
+    animation: flyIn 1s ease-out 0.6s forwards;
 }
 
 .cta-button {
@@ -384,5 +402,86 @@ spline-viewer {
 }
 
 .find-matches-button:hover {
+    background-color: #1976D2;
+}
+
+@keyframes flyIn {
+    0% {
+        opacity: 0;
+        transform: translateY(100px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Matches Page */
+.matches-container {
+    max-width: 800px;
+    margin: 120px auto 0;
+    padding: 2rem;
+    text-align: center;
+}
+
+.matches-title {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: #333;
+}
+
+.match-status {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.match-status.success {
+    color: #2196F3;
+}
+
+.match-status.pending {
+    color: #FFA726;
+}
+
+.match-instructions {
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 2rem;
+}
+
+.match-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    margin: 0 auto;
+    max-width: 500px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.match-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+.time-difference {
+    color: #2196F3;
+    font-weight: 500;
+    margin: 1rem 0;
+}
+
+.select-match-btn {
+    background-color: #2196F3;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    border-radius: 4px;
+    margin-top: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.select-match-btn:hover {
     background-color: #1976D2;
 } 

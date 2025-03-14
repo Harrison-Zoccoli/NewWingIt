@@ -19,7 +19,7 @@
     </script>
 </head>
 <body>
-    <nav>
+    <nav class="{% if request.endpoint in ['add_traveler', 'find_all_matches'] %}nav-solid{% endif %}">
         <div class="nav-container">
             <div class="logo">
                 <span class="logo-text">Wing It</span>
